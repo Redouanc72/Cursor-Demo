@@ -71,10 +71,28 @@ sf org assign permset -n Lunar_Basecamp_Admin -o <alias>
 ./scripts/deploy-and-load.sh <scratch-org-alias>
 ```
 
-## Repository
+## Git and GitHub
 
-- **Git**: Initialized with `.gitignore` for `.sfdx/`, `.sf/`, `node_modules/`, `coverage/`, `.DS_Store`, `*.log`, `.localdevserver/`, and scratch org config overrides.
-- **Remote**: Add your GitHub remote and push (see below if you create the repo on GitHub first).
+This project is a Git repository with an initial commit. `.gitignore` excludes `.sfdx/`, `.sf/`, `.vscode/`, `node_modules/`, `coverage/`, `.DS_Store`, `*.log`, `.localdevserver/`, and scratch org config overrides.
+
+### Push to GitHub
+
+1. **Create a new repository on GitHub**
+   - Name: `lunar-basecamp-outfitters-sfdc`
+   - Description: `Salesforce implementation for Lunar Basecamp Outfitters - managing lunar hiking expeditions, gear inventory, and explorer certifications`
+   - Do **not** initialize with a README (this repo already has one).
+
+2. **Point the remote to your repo** (replace `YOUR_GITHUB_USERNAME` with your GitHub username or org):
+
+   ```bash
+   git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/lunar-basecamp-outfitters-sfdc.git
+   ```
+
+3. **Push the main branch**:
+
+   ```bash
+   git push -u origin main
+   ```
 
 ## License
 
