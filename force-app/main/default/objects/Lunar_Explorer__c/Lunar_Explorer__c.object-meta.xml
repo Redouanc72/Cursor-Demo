@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Lunar Explorer</label>
+    <pluralLabel>Lunar Explorers</pluralLabel>
+    <description>Represents a registered explorer for Lunar Basecamp Outfitters. Stores personal details, EVA experience, certification level, and emergency contact information.</description>
+    <nameField>
+        <label>Explorer Name</label>
+        <type>Text</type>
+        <trackHistory>false</trackHistory>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <enableHistory>true</enableHistory>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableFeeds>false</enableFeeds>
+    <enableBulkApi>true</enableBulkApi>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <searchLayouts>
+        <customTabListAdditionalFields>Email__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Level__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Email__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Certification_Level__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+</CustomObject>

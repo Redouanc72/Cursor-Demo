@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Expedition Booking</label>
+    <pluralLabel>Expedition Bookings</pluralLabel>
+    <description>Represents a lunar expedition booking made by a Lunar Explorer with Lunar Basecamp Outfitters. Tracks the expedition itinerary, landing site, status, and total cost.</description>
+    <nameField>
+        <label>Booking Number</label>
+        <type>AutoNumber</type>
+        <displayFormat>EXP-{0000}</displayFormat>
+        <trackHistory>false</trackHistory>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <enableHistory>true</enableHistory>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableFeeds>false</enableFeeds>
+    <enableBulkApi>true</enableBulkApi>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <searchLayouts>
+        <customTabListAdditionalFields>Expedition_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Explorer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Launch_Date__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Expedition_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Expedition_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Landing_Site__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+</CustomObject>

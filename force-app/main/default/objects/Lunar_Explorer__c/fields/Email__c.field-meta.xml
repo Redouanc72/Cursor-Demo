@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email__c</fullName>
+    <label>Email</label>
+    <type>Email</type>
+    <required>false</required>
+    <unique>false</unique>
+    <externalId>false</externalId>
+    <description>Primary email address for the lunar explorer used for booking confirmations and safety briefings.</description>
+    <inlineHelpText>Enter the explorer&apos;s primary email address for communications and booking notifications.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

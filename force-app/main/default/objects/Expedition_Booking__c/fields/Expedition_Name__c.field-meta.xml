@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expedition_Name__c</fullName>
+    <label>Expedition Name</label>
+    <type>Text</type>
+    <length>255</length>
+    <required>false</required>
+    <unique>false</unique>
+    <caseSensitive>false</caseSensitive>
+    <externalId>false</externalId>
+    <description>Descriptive name for the expedition package or tour (e.g., &quot;Tycho Rim Traverse - 5 Day Classic&quot;).</description>
+    <inlineHelpText>Enter a descriptive name for this expedition that identifies the route or experience type.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

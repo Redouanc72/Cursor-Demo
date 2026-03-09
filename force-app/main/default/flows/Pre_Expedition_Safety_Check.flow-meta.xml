@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+
+    <actionCalls>
+        <name>Send_Compliance_Alert_Email</name>
+        <label>Send Compliance Alert Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>tmpl_EmailSubject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>var_FailureDetails</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+
+    <assignments>
+        <name>Assign_Error_Message</name>
+        <label>Assign Error Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_ErrorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Blocked_Booking</name>
+        <label>Assign Blocked Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>rec_BookingToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>rec_BookingToUpdate.Compliance_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Blocked</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Booking_Blocked</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Cleared_Booking</name>
+        <label>Assign Cleared Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>rec_BookingToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>rec_BookingToUpdate.Compliance_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Cleared</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Booking_Cleared</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Failure_Details</name>
+        <label>Assign Failure Details</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_FailureDetails</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>tmpl_FailureEmailBody</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Blocked_Booking</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Init_Flags</name>
+        <label>Init Flags</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_HasBasicEVA</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_HasCraterNav</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_HasSolarRad</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Set_BasicEVA</name>
+        <label>Set Has Basic EVA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_HasBasicEVA</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Set_CraterNav</name>
+        <label>Set Has Crater Nav</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_HasCraterNav</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Set_MedicalNotOK</name>
+        <label>Set Medical Not OK</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_MedicalClearanceOK</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Safety_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Set_MedicalOK</name>
+        <label>Set Medical OK</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_MedicalClearanceOK</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Safety_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <assignments>
+        <name>Assign_Set_SolarRad</name>
+        <label>Set Has Solar Rad</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_HasSolarRad</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Certs</targetReference>
+        </connector>
+    </assignments>
+
+    <decisions>
+        <name>Check_All_Requirements</name>
+        <label>Check All Requirements</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Failure_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Blocked</defaultConnectorLabel>
+        <rules>
+            <name>All_Pass</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_HasBasicEVA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_HasCraterNav</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_HasSolarRad</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_MedicalClearanceOK</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Cleared_Booking</targetReference>
+            </connector>
+            <label>All Pass</label>
+        </rules>
+    </decisions>
+
+    <decisions>
+        <name>Check_Cert_Type_And_Validity</name>
+        <label>Check Cert Type and Validity</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Through_Certs</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Next</defaultConnectorLabel>
+        <rules>
+            <name>Basic_EVA_Valid</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Certification_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Basic EVA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Expiry_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>formula_Today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_BasicEVA</targetReference>
+            </connector>
+            <label>Basic EVA Valid</label>
+        </rules>
+        <rules>
+            <name>Crater_Nav_Valid</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Certification_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Crater Navigation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Expiry_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>formula_Today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_CraterNav</targetReference>
+            </connector>
+            <label>Crater Nav Valid</label>
+        </rules>
+        <rules>
+            <name>Solar_Rad_Valid</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Certification_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Solar Radiation Protocol</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>rec_CurrentCert.Expiry_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>formula_Today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_SolarRad</targetReference>
+            </connector>
+            <label>Solar Rad Valid</label>
+        </rules>
+    </decisions>
+
+    <decisions>
+        <name>Check_Medical_Clearance</name>
+        <label>Check Medical Clearance</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Set_MedicalNotOK</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not OK</defaultConnectorLabel>
+        <rules>
+            <name>Medical_Clearance_OK</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>rec_Explorer</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>rec_Explorer.Medical_Clearance_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>formula_MedicalCutoff</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_MedicalOK</targetReference>
+            </connector>
+            <label>Medical Clearance OK</label>
+        </rules>
+    </decisions>
+
+    <decisions>
+        <name>Check_Status_Changed_To_Confirmed</name>
+        <label>Check Status Changed to Confirmed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Confirmed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Confirmed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Explorer</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+
+    <description>Runs when Expedition_Booking__c Status changes to Confirmed. Queries Safety_Certification__c records for the linked Lunar_Explorer__c, validates Basic EVA, Crater Navigation, and Solar Radiation Protocol certifications (non-expired), and Medical_Clearance_Date__c within 90 days. If any check fails: sends email alert to coordinator, sets Compliance_Status__c to Blocked. If all pass: sets Compliance_Status__c to Cleared and creates a Task for gear assignment.</description>
+
+    <formulas>
+        <name>formula_BasicEVAStatus</name>
+        <dataType>String</dataType>
+        <expression>IF({!var_HasBasicEVA}, &quot;OK&quot;, &quot;MISSING or EXPIRED&quot;)</expression>
+    </formulas>
+
+    <formulas>
+        <name>formula_CraterNavStatus</name>
+        <dataType>String</dataType>
+        <expression>IF({!var_HasCraterNav}, &quot;OK&quot;, &quot;MISSING or EXPIRED&quot;)</expression>
+    </formulas>
+
+    <formulas>
+        <name>formula_MedicalCutoff</name>
+        <dataType>Date</dataType>
+        <expression>ADDDAYS(TODAY(), -90)</expression>
+    </formulas>
+
+    <formulas>
+        <name>formula_MedicalStatus</name>
+        <dataType>String</dataType>
+        <expression>IF({!var_MedicalClearanceOK}, &quot;OK&quot;, &quot;EXPIRED or MISSING&quot;)</expression>
+    </formulas>
+
+    <formulas>
+        <name>formula_SolarRadStatus</name>
+        <dataType>String</dataType>
+        <expression>IF({!var_HasSolarRad}, &quot;OK&quot;, &quot;MISSING or EXPIRED&quot;)</expression>
+    </formulas>
+
+    <formulas>
+        <name>formula_Today</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+
+    <label>Pre Expedition Safety Check</label>
+
+    <loops>
+        <name>Loop_Through_Certs</name>
+        <label>Loop Through Certs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNextValueToReference>rec_CurrentCert</assignNextValueToReference>
+        <collectionReference>col_Certs</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_Cert_Type_And_Validity</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Check_All_Requirements</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+
+    <processType>AutoLaunchedFlow</processType>
+
+    <recordCreates>
+        <name>Create_Gear_Assignment_Task</name>
+        <label>Create Gear Assignment Task</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Gear Assignment: {!$Record.Expedition_Name__c}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Explorer passed pre-expedition safety checks. Assign gear for this expedition.</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordCreates>
+
+    <recordLookups>
+        <name>Get_Explorer</name>
+        <label>Get Explorer</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Medical_Clearance</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Explorer__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lunar_Explorer__c</object>
+        <outputReference>rec_Explorer</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Full_Name__c</queriedFields>
+        <queriedFields>Medical_Clearance_Date__c</queriedFields>
+    </recordLookups>
+
+    <recordLookups>
+        <name>Get_Safety_Certs</name>
+        <label>Get Safety Certs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Init_Flags</targetReference>
+        </connector>
+        <filters>
+            <field>Explorer__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Explorer__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pass_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Safety_Certification__c</object>
+        <outputReference>col_Certs</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Certification_Type__c</queriedFields>
+        <queriedFields>Expiry_Date__c</queriedFields>
+    </recordLookups>
+
+    <recordUpdates>
+        <name>Update_Booking_Blocked</name>
+        <label>Update Booking Blocked</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Compliance_Alert_Email</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
+        <inputReference>rec_BookingToUpdate</inputReference>
+    </recordUpdates>
+
+    <recordUpdates>
+        <name>Update_Booking_Cleared</name>
+        <label>Update Booking Cleared</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Gear_Assignment_Task</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
+        <inputReference>rec_BookingToUpdate</inputReference>
+    </recordUpdates>
+
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <object>Expedition_Booking__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+        <connector>
+            <targetReference>Check_Status_Changed_To_Confirmed</targetReference>
+        </connector>
+    </start>
+
+    <status>Draft</status>
+
+    <textTemplates>
+        <name>tmpl_EmailSubject</name>
+        <description>Email subject for compliance alert</description>
+        <text>Pre-Expedition Safety Check BLOCKED: {!$Record.Expedition_Name__c}</text>
+    </textTemplates>
+
+    <textTemplates>
+        <name>tmpl_FailureEmailBody</name>
+        <description>Email body for compliance failure alert</description>
+        <text>Pre-Expedition Safety Check FAILED for Expedition: {!$Record.Expedition_Name__c}
+
+Explorer: {!BLANKVALUE(rec_Explorer.Full_Name__c, "No explorer linked")}
+
+The following requirements were not met:
+- Basic EVA: {!formula_BasicEVAStatus}
+- Crater Navigation: {!formula_CraterNavStatus}
+- Solar Radiation Protocol: {!formula_SolarRadStatus}
+- Medical Clearance (within 90 days): {!formula_MedicalStatus}
+
+Compliance Status has been set to BLOCKED. Resolve the issues above before proceeding with gear assignment.</text>
+    </textTemplates>
+
+    <variables>
+        <name>col_Certs</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Safety_Certification__c</objectType>
+    </variables>
+
+    <variables>
+        <name>rec_BookingToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Expedition_Booking__c</objectType>
+    </variables>
+
+    <variables>
+        <name>rec_CurrentCert</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Safety_Certification__c</objectType>
+    </variables>
+
+    <variables>
+        <name>rec_Explorer</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lunar_Explorer__c</objectType>
+    </variables>
+
+    <variables>
+        <name>var_FailureDetails</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+
+    <variables>
+        <name>var_HasBasicEVA</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+
+    <variables>
+        <name>var_HasCraterNav</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+
+    <variables>
+        <name>var_HasSolarRad</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+
+    <variables>
+        <name>var_ErrorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+
+    <variables>
+        <name>var_MedicalClearanceOK</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

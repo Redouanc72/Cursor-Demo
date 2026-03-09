@@ -1,0 +1,23 @@
+# Salesforce CLI
+.sfdx/
+.sf/
+*.log
+
+# IDE / Editor
+.vscode/
+
+# Dependencies
+node_modules/
+
+# Test / Build
+coverage/
+
+# Local dev server
+.localdevserver/
+
+# OS
+.DS_Store
+
+# Scratch org local config overrides (keep config/project-scratch-def.json in repo)
+*-scratch-def.local.json
+.scratch-org-*

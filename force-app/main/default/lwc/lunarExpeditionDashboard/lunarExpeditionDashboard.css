@@ -1,0 +1,252 @@
+/* Mission Control — dark space theme (SLDS-friendly) */
+:host {
+    --lunar-bg: #0c1445;
+    --lunar-surface: #1a237e;
+    --lunar-card: #162059;
+    --lunar-border: #2d3a8c;
+    --lunar-text: #e8eaf6;
+    --lunar-text-muted: #9fa8da;
+    --lunar-accent: #ff9800;
+    --lunar-success: #4caf50;
+    --lunar-warning: #ffc107;
+    --lunar-error: #f44336;
+    --lunar-silver: #b0bec5;
+}
+
+.dashboard.mission-control {
+    background: var(--lunar-bg);
+    min-height: 100%;
+    color: var(--lunar-text);
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, var(--lunar-surface) 0%, var(--lunar-card) 100%);
+    border-bottom: 1px solid var(--lunar-border);
+}
+
+.title-text {
+    color: var(--lunar-text);
+    font-weight: 700;
+}
+
+.subtitle-text {
+    color: var(--lunar-text-muted);
+    margin-top: 0.25rem;
+}
+
+.refresh-btn {
+    --slds-c-button-neutral-color-background: var(--lunar-card);
+    --slds-c-button-neutral-color-border: var(--lunar-border);
+    --slds-c-button-text-color: var(--lunar-silver);
+}
+
+.section-title {
+    color: var(--lunar-silver);
+}
+
+/* Expedition cards */
+.cards-section {
+    padding-top: 1rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.expedition-card.card-panel {
+    background: var(--lunar-card);
+    border: 1px solid var(--lunar-border);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.expedition-card.card-panel:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.explorer-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--lunar-surface);
+    border: 2px solid var(--lunar-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatar-initials {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--lunar-accent);
+}
+
+.card-expedition-name {
+    color: var(--lunar-text);
+    margin: 0;
+}
+
+.explorer-name {
+    color: var(--lunar-text-muted);
+    margin: 0.25rem 0 0 0;
+}
+
+.label-text {
+    color: var(--lunar-text-muted);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+}
+
+.countdown {
+    color: var(--lunar-accent);
+    font-weight: 600;
+}
+
+.moon-icon {
+    margin-right: 0.35rem;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+/* Compliance badges — override SLDS for theme */
+.expedition-card lightning-badge[variant="success"] {
+    --slds-c-badge-color-background: var(--lunar-success);
+    --slds-c-badge-color-border: var(--lunar-success);
+}
+
+.expedition-card lightning-badge[variant="error"] {
+    --slds-c-badge-color-background: var(--lunar-error);
+    --slds-c-badge-color-border: var(--lunar-error);
+}
+
+.expedition-card lightning-badge[variant="warning"] {
+    --slds-c-badge-color-background: var(--lunar-warning);
+    --slds-c-badge-color-border: var(--lunar-warning);
+}
+
+/* Map */
+.map-section {
+    padding-top: 0.5rem;
+}
+
+.map-container.card-panel {
+    background: var(--lunar-card);
+    border: 1px solid var(--lunar-border);
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 320px;
+}
+
+.mission-map {
+    --slds-c-map-container-height: 320px;
+}
+
+/* Charts */
+.charts-section {
+    padding-top: 0.5rem;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.chart-panel.card-panel {
+    background: var(--lunar-card);
+    border: 1px solid var(--lunar-border);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.chart-panel h3 {
+    color: var(--lunar-silver);
+    margin: 0 0 0.75rem 0;
+}
+
+.bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 2rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-label {
+    font-size: 0.8rem;
+    color: var(--lunar-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bar-track {
+    height: 20px;
+    background: var(--lunar-surface);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    min-width: 4px;
+    background: linear-gradient(90deg, var(--lunar-accent), #ffb74d);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.bar-fill.site-bar {
+    background: linear-gradient(90deg, #5c6bc0, #9fa8da);
+}
+
+.chart-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--lunar-text);
+    text-align: right;
+}
+
+.empty-state {
+    color: var(--lunar-text-muted);
+}
+
+/* Alert styling */
+.slds-alert_error {
+    background: rgba(244, 67, 54, 0.15);
+    border-color: var(--lunar-error);
+    color: var(--lunar-text);
+}

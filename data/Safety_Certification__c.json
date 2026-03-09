@@ -1,0 +1,49 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Safety_Certification__c", "referenceId": "Cert1" },
+      "Explorer__c": "@Explorer1",
+      "Certification_Type__c": "Basic EVA",
+      "Issued_Date__c": "2024-06-10",
+      "Expiry_Date__c": "2026-06-10",
+      "Instructor_Name__c": "Dr. Priya Nair",
+      "Pass_Status__c": true
+    },
+    {
+      "attributes": { "type": "Safety_Certification__c", "referenceId": "Cert2" },
+      "Explorer__c": "@Explorer1",
+      "Certification_Type__c": "Crater Navigation",
+      "Issued_Date__c": "2024-06-10",
+      "Expiry_Date__c": "2026-06-10",
+      "Instructor_Name__c": "Dr. Priya Nair",
+      "Pass_Status__c": true
+    },
+    {
+      "attributes": { "type": "Safety_Certification__c", "referenceId": "Cert3" },
+      "Explorer__c": "@Explorer1",
+      "Certification_Type__c": "Solar Radiation Protocol",
+      "Issued_Date__c": "2025-04-18",
+      "Expiry_Date__c": "2027-04-18",
+      "Instructor_Name__c": "Dr. Mei-Lin Zhao",
+      "Pass_Status__c": true
+    },
+    {
+      "attributes": { "type": "Safety_Certification__c", "referenceId": "Cert4" },
+      "Explorer__c": "@Explorer2",
+      "Certification_Type__c": "Basic EVA",
+      "Issued_Date__c": "2025-01-20",
+      "Expiry_Date__c": "2027-01-20",
+      "Instructor_Name__c": "Lt. Ben Okafor",
+      "Pass_Status__c": true
+    },
+    {
+      "attributes": { "type": "Safety_Certification__c", "referenceId": "Cert5" },
+      "Explorer__c": "@Explorer3",
+      "Certification_Type__c": "Basic EVA",
+      "Issued_Date__c": "2025-11-10",
+      "Expiry_Date__c": "2027-11-10",
+      "Instructor_Name__c": "Lt. Ben Okafor",
+      "Pass_Status__c": true
+    }
+  ]
+}

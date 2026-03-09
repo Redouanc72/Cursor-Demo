@@ -1,0 +1,130 @@
+<template>
+    <div class="dashboard slds-theme_space mission-control">
+        <header class="dashboard-header slds-p-around_medium">
+            <div class="slds-grid slds-grid_vertical-align-center slds-wrap">
+                <div class="slds-col slds-grow">
+                    <h1 class="slds-text-heading_large title-text">Mission Control</h1>
+                    <p class="slds-text-body_small subtitle-text">Lunar Basecamp Outfitters — Active &amp; Confirmed Expeditions</p>
+                </div>
+                <div class="slds-col slds-no-flex">
+                    <lightning-button
+                        label="Refresh"
+                        icon-name="utility:refresh"
+                        onclick={handleRefresh}
+                        disabled={isLoading}
+                        variant="neutral"
+                        class="refresh-btn"
+                    ></lightning-button>
+                </div>
+            </div>
+        </header>
+
+        <template lwc:if={error}>
+            <div class="slds-p-around_medium">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <span>{error.body?.message || error.message || 'Failed to load dashboard.'}</span>
+                </div>
+            </div>
+        </template>
+
+        <template lwc:if={isLoading}>
+            <div class="slds-p-around_large slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template lwc:if={hasExpeditions}>
+            <section class="slds-p-horizontal_medium slds-p-bottom_medium cards-section">
+                <h2 class="slds-text-heading_medium section-title slds-m-bottom_small">Expeditions</h2>
+                <div class="cards-grid">
+                    <template for:each={expeditions} for:item="exp">
+                        <article key={exp.id} class="expedition-card card-panel">
+                            <div class="card-header slds-grid slds-grid_vertical-align-center">
+                                <div class="explorer-avatar" title="Explorer photo placeholder">
+                                    <span class="avatar-initials">{exp.explorerInitials}</span>
+                                </div>
+                                <div class="slds-grow slds-p-left_small">
+                                    <h3 class="slds-text-heading_small card-expedition-name">{exp.expeditionName}</h3>
+                                    <p class="slds-text-body_small explorer-name">{exp.explorerName}</p>
+                                </div>
+                                <div>
+                                    <lightning-badge label={exp.complianceLabel} variant={exp.complianceVariant}></lightning-badge>
+                                </div>
+                            </div>
+                            <div class="card-body slds-m-top_small">
+                                <div class="slds-grid slds-wrap slds-gutters_small">
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                        <p class="slds-text-body_small label-text">Launch</p>
+                                        <p class="slds-text-body_regular">{exp.launchDateFormatted}</p>
+                                        <p class="countdown slds-m-top_xx-small">{exp.countdownText}</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                        <p class="slds-text-body_small label-text">Landing site</p>
+                                        <p class="slds-text-body_regular slds-grid slds-grid_vertical-align-center">
+                                            <span class="moon-icon" aria-hidden="true">&#9790;</span>
+                                            {exp.landingSite}
+                                        </p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <p class="slds-text-body_small label-text">Gear items</p>
+                                        <p class="slds-text-body_regular">{exp.gearItemCount}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </section>
+
+            <section class="slds-p-horizontal_medium slds-p-bottom_medium map-section" lwc:if={mapMarkers.length}>
+                <h2 class="slds-text-heading_medium section-title slds-m-bottom_small">Landing Sites</h2>
+                <div class="map-container card-panel">
+                    <lightning-map map-markers={mapMarkers} class="mission-map"></lightning-map>
+                </div>
+            </section>
+        </template>
+
+        <template lwc:if={hasCharts}>
+            <section class="slds-p-horizontal_medium slds-p-bottom_large charts-section">
+                <h2 class="slds-text-heading_medium section-title slds-m-bottom_small">Bookings Overview</h2>
+                <div class="charts-grid">
+                    <div class="chart-panel card-panel slds-m-bottom_medium">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">By month</h3>
+                        <div class="bar-chart">
+                            <template for:each={monthChartBars} for:item="bar">
+                                <div key={bar.label} class="chart-row">
+                                    <span class="chart-label">{bar.label}</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style={bar.barStyle}></div>
+                                    </div>
+                                    <span class="chart-value">{bar.value}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="chart-panel card-panel slds-m-bottom_medium">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">By landing site</h3>
+                        <div class="bar-chart">
+                            <template for:each={siteChartBars} for:item="bar">
+                                <div key={bar.label} class="chart-row">
+                                    <span class="chart-label">{bar.label}</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill site-bar" style={bar.barStyle}></div>
+                                    </div>
+                                    <span class="chart-value">{bar.value}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template lwc:if={hasNoData}>
+            <div class="slds-p-around_large slds-align_absolute-center empty-state">
+                <p class="slds-text-body_regular">No confirmed or in-progress expeditions.</p>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,59 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Gear_Item__c", "referenceId": "Gear1" },
+      "Name": "Apollo Heritage Pressure Suit X7",
+      "Item_Name__c": "Apollo Heritage Pressure Suit X7",
+      "Category__c": "Pressure Suit",
+      "Serial_Number__c": "LBO-2024-001",
+      "Maintenance_Due_Date__c": "2026-07-09",
+      "Status__c": "Available",
+      "Daily_Rental_Rate__c": 4500,
+      "Purchase_Price__c": 185000
+    },
+    {
+      "attributes": { "type": "Gear_Item__c", "referenceId": "Gear2" },
+      "Name": "CraterGrip Magnetic Boots Mk III",
+      "Item_Name__c": "CraterGrip Magnetic Boots Mk III",
+      "Category__c": "Boots",
+      "Serial_Number__c": "LBO-2024-004",
+      "Maintenance_Due_Date__c": "2026-09-09",
+      "Status__c": "Available",
+      "Daily_Rental_Rate__c": 650,
+      "Purchase_Price__c": 28000
+    },
+    {
+      "attributes": { "type": "Gear_Item__c", "referenceId": "Gear3" },
+      "Name": "HorizonLink Comm Headset Pro",
+      "Item_Name__c": "HorizonLink Comm Headset Pro",
+      "Category__c": "Communication Device",
+      "Serial_Number__c": "LBO-2024-006",
+      "Maintenance_Due_Date__c": "2026-11-09",
+      "Status__c": "Available",
+      "Daily_Rental_Rate__c": 800,
+      "Purchase_Price__c": 32000
+    },
+    {
+      "attributes": { "type": "Gear_Item__c", "referenceId": "Gear4" },
+      "Name": "TitanThread Tether Kit Elite",
+      "Item_Name__c": "TitanThread Tether Kit Elite",
+      "Category__c": "Tether Kit",
+      "Serial_Number__c": "LBO-2024-008",
+      "Maintenance_Due_Date__c": "2026-06-09",
+      "Status__c": "Available",
+      "Daily_Rental_Rate__c": 520,
+      "Purchase_Price__c": 18500
+    },
+    {
+      "attributes": { "type": "Gear_Item__c", "referenceId": "Gear5" },
+      "Name": "LunarBreath O2 System Gen-4",
+      "Item_Name__c": "LunarBreath O2 System Gen-4",
+      "Category__c": "Oxygen System",
+      "Serial_Number__c": "LBO-2024-010",
+      "Maintenance_Due_Date__c": "2026-08-09",
+      "Status__c": "Available",
+      "Daily_Rental_Rate__c": 3200,
+      "Purchase_Price__c": 145000
+    }
+  ]
+}

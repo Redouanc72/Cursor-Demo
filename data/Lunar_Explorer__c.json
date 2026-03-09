@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Lunar_Explorer__c", "referenceId": "Explorer1" },
+      "Name": "Sarah Chen",
+      "Full_Name__c": "Sarah Chen",
+      "Email__c": "sarah.chen@lunarbasecamp.demo",
+      "EVA_Hours__c": 320,
+      "Certification_Level__c": "Master Lunar Alpinist",
+      "Medical_Clearance_Date__c": "2025-12-09",
+      "Emergency_Contact__c": "David Chen — +1 415 555 0192"
+    },
+    {
+      "attributes": { "type": "Lunar_Explorer__c", "referenceId": "Explorer2" },
+      "Name": "Marcus Rodriguez",
+      "Full_Name__c": "Marcus Rodriguez",
+      "Email__c": "marcus.rodriguez@lunarbasecamp.demo",
+      "EVA_Hours__c": 185,
+      "Certification_Level__c": "Advanced Lava Tube Explorer",
+      "Medical_Clearance_Date__c": "2025-10-09",
+      "Emergency_Contact__c": "Elena Rodriguez — +1 512 555 0348"
+    },
+    {
+      "attributes": { "type": "Lunar_Explorer__c", "referenceId": "Explorer3" },
+      "Name": "Yuki Tanaka",
+      "Full_Name__c": "Yuki Tanaka",
+      "Email__c": "yuki.tanaka@lunarbasecamp.demo",
+      "EVA_Hours__c": 67,
+      "Certification_Level__c": "Novice Crater Walker",
+      "Medical_Clearance_Date__c": "2026-02-09",
+      "Emergency_Contact__c": "Hiroshi Tanaka — +81 90 5555 7821"
+    },
+    {
+      "attributes": { "type": "Lunar_Explorer__c", "referenceId": "Explorer4" },
+      "Name": "Dmitri Volkov",
+      "Full_Name__c": "Dmitri Volkov",
+      "Email__c": "dmitri.volkov@lunarbasecamp.demo",
+      "EVA_Hours__c": 498,
+      "Certification_Level__c": "Master Lunar Alpinist",
+      "Medical_Clearance_Date__c": "2026-01-09",
+      "Emergency_Contact__c": "Natasha Volkova — +7 499 555 3317"
+    },
+    {
+      "attributes": { "type": "Lunar_Explorer__c", "referenceId": "Explorer5" },
+      "Name": "Amara Okonkwo",
+      "Full_Name__c": "Amara Okonkwo",
+      "Email__c": "amara.okonkwo@lunarbasecamp.demo",
+      "EVA_Hours__c": 112,
+      "Certification_Level__c": "Advanced Lava Tube Explorer",
+      "Medical_Clearance_Date__c": "2025-11-09",
+      "Emergency_Contact__c": "Chidinma Okonkwo — +234 80 5555 9142"
+    }
+  ]
+}

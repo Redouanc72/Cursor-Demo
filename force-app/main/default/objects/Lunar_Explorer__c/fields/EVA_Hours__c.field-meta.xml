@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EVA_Hours__c</fullName>
+    <label>EVA Hours</label>
+    <type>Number</type>
+    <precision>18</precision>
+    <scale>1</scale>
+    <required>false</required>
+    <unique>false</unique>
+    <externalId>false</externalId>
+    <defaultValue>0</defaultValue>
+    <description>Total cumulative extravehicular activity (EVA) hours logged by this explorer across all missions.</description>
+    <inlineHelpText>Total hours of extravehicular activity experience. Used to determine eligibility for advanced expeditions.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

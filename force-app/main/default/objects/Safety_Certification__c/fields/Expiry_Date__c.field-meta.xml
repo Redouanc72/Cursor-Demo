@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expiry_Date__c</fullName>
+    <label>Expiry Date</label>
+    <type>Date</type>
+    <required>false</required>
+    <description>Date after which this certification is no longer valid and the explorer must re-certify before participating in relevant expedition types.</description>
+    <inlineHelpText>Expiration date of this certification. Explorers must re-certify before this date to remain eligible.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

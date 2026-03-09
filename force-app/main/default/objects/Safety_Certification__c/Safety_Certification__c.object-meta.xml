@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Safety Certification</label>
+    <pluralLabel>Safety Certifications</pluralLabel>
+    <description>Records individual safety certifications issued to lunar explorers by Lunar Basecamp Outfitters instructors. Tracks certification type, validity period, and pass status.</description>
+    <nameField>
+        <label>Certification Number</label>
+        <type>AutoNumber</type>
+        <displayFormat>CERT-{0000}</displayFormat>
+        <trackHistory>false</trackHistory>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <enableHistory>true</enableHistory>
+    <enableActivities>false</enableActivities>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableFeeds>false</enableFeeds>
+    <enableBulkApi>true</enableBulkApi>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <searchLayouts>
+        <customTabListAdditionalFields>Explorer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Expiry_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Pass_Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Certification_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Expiry_Date__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Certification_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Pass_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+</CustomObject>

@@ -1,0 +1,34 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Expedition_Booking__c", "referenceId": "Booking1" },
+      "Expedition_Name__c": "Tycho Shadow Traverse",
+      "Explorer__c": "@Explorer1",
+      "Launch_Date__c": "2026-04-15",
+      "Return_Date__c": "2026-04-22",
+      "Landing_Site__c": "Tycho Crater",
+      "Status__c": "Planned",
+      "Total_Cost__c": 285000
+    },
+    {
+      "attributes": { "type": "Expedition_Booking__c", "referenceId": "Booking2" },
+      "Expedition_Name__c": "Mare Tranquillitatis Heritage Walk",
+      "Explorer__c": "@Explorer2",
+      "Launch_Date__c": "2026-05-01",
+      "Return_Date__c": "2026-05-07",
+      "Landing_Site__c": "Mare Tranquillitatis",
+      "Status__c": "Planned",
+      "Total_Cost__c": 165000
+    },
+    {
+      "attributes": { "type": "Expedition_Booking__c", "referenceId": "Booking3" },
+      "Expedition_Name__c": "Shackleton Ice Core Expedition",
+      "Explorer__c": "@Explorer4",
+      "Launch_Date__c": "2026-05-20",
+      "Return_Date__c": "2026-05-28",
+      "Landing_Site__c": "Shackleton Rim",
+      "Status__c": "Planned",
+      "Total_Cost__c": 420000
+    }
+  ]
+}

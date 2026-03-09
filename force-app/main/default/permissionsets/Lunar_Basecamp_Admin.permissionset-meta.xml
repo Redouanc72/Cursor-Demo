@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Lunar Basecamp Admin</label>
+    <description>
+        Full administrative access to all Lunar Basecamp Outfitters custom objects.
+        Grants Create, Read, Edit, Delete, View All, and Modify All on:
+        Lunar_Explorer__c, Gear_Item__c, Expedition_Booking__c,
+        Safety_Certification__c, and Expedition_Gear__c.
+        Includes read/edit FLS for all 27 custom fields across those objects.
+        Master-Detail fields on Expedition_Gear__c are excluded — access
+        is controlled by their respective parent object permissions.
+    </description>
+    <hasActivationRequired>false</hasActivationRequired>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  TAB VISIBILITY                                         -->
+    <!--  All 5 custom object tabs set to Visible               -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <tabVisibilities>
+        <tab>Lunar_Explorer__c</tab>
+        <visibility>Visible</visibility>
+    </tabVisibilities>
+
+    <tabVisibilities>
+        <tab>Gear_Item__c</tab>
+        <visibility>Visible</visibility>
+    </tabVisibilities>
+
+    <tabVisibilities>
+        <tab>Expedition_Booking__c</tab>
+        <visibility>Visible</visibility>
+    </tabVisibilities>
+
+    <tabVisibilities>
+        <tab>Safety_Certification__c</tab>
+        <visibility>Visible</visibility>
+    </tabVisibilities>
+
+    <tabVisibilities>
+        <tab>Expedition_Gear__c</tab>
+        <visibility>Visible</visibility>
+    </tabVisibilities>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  OBJECT PERMISSIONS                                     -->
+    <!--  Full CRUD + View All + Modify All on all 5 objects     -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <objectPermissions>
+        <object>Lunar_Explorer__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>true</allowDelete>
+        <viewAllRecords>true</viewAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <object>Gear_Item__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>true</allowDelete>
+        <viewAllRecords>true</viewAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <object>Expedition_Booking__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>true</allowDelete>
+        <viewAllRecords>true</viewAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <object>Safety_Certification__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>true</allowDelete>
+        <viewAllRecords>true</viewAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <object>Expedition_Gear__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>true</allowDelete>
+        <viewAllRecords>true</viewAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
+    </objectPermissions>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  FIELD PERMISSIONS — Lunar_Explorer__c (6 fields)      -->
+    <!--  Note: Name field excluded (always visible)            -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.Full_Name__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.Email__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.EVA_Hours__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Novice Crater Walker | Advanced Lava Tube Explorer | Master Lunar Alpinist -->
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.Certification_Level__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.Medical_Clearance_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Lunar_Explorer__c.Emergency_Contact__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  FIELD PERMISSIONS — Gear_Item__c (7 fields)           -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <fieldPermissions>
+        <field>Gear_Item__c.Item_Name__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Pressure Suit | Oxygen System | Boots | Gloves |
+                  Tether Kit | Crater Anchor | Communication Device -->
+    <fieldPermissions>
+        <field>Gear_Item__c.Category__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Unique + ExternalId: manufacturer serial number -->
+    <fieldPermissions>
+        <field>Gear_Item__c.Serial_Number__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Gear_Item__c.Maintenance_Due_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Available | Rented | Maintenance | Retired -->
+    <fieldPermissions>
+        <field>Gear_Item__c.Status__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Gear_Item__c.Daily_Rental_Rate__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Gear_Item__c.Purchase_Price__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  FIELD PERMISSIONS — Expedition_Booking__c (7 fields)  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Expedition_Name__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Lookup → Lunar_Explorer__c -->
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Explorer__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Launch_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Return_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Tycho Crater | Shackleton Rim | Hadley Rille |
+                  Mare Tranquillitatis | Aristarchus Plateau -->
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Landing_Site__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Planned | Confirmed | In Progress | Completed | Cancelled -->
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Compliance_Status__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Status__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Expedition_Booking__c.Total_Cost__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  FIELD PERMISSIONS — Safety_Certification__c (6 fields)-->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Lookup → Lunar_Explorer__c -->
+    <fieldPermissions>
+        <field>Safety_Certification__c.Explorer__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Picklist: Basic EVA | Crater Navigation | Emergency Repair |
+                  Low-G Climbing | Solar Radiation Protocol -->
+    <fieldPermissions>
+        <field>Safety_Certification__c.Certification_Type__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Safety_Certification__c.Issued_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Safety_Certification__c.Expiry_Date__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <field>Safety_Certification__c.Instructor_Name__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- Checkbox: always has a value; not required in PS exclusion rules -->
+    <fieldPermissions>
+        <field>Safety_Certification__c.Pass_Status__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  FIELD PERMISSIONS — Expedition_Gear__c (1 field)      -->
+    <!--  Expedition_Booking__c (MasterDetail) — EXCLUDED       -->
+    <!--    Access controlled by Expedition_Booking__c parent   -->
+    <!--  Gear_Item__c (MasterDetail) — EXCLUDED                -->
+    <!--    Access controlled by Gear_Item__c parent            -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <fieldPermissions>
+        <field>Expedition_Gear__c.Quantity__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+
+</PermissionSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pass_Status__c</fullName>
+    <label>Pass Status</label>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the explorer successfully passed the certification assessment. Unchecked records represent failed or pending assessments.</description>
+    <inlineHelpText>Check if the explorer passed this certification assessment. Leave unchecked for failed or pending assessments.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Expedition Gear</label>
+    <pluralLabel>Expedition Gear</pluralLabel>
+    <description>Junction object linking Expedition Bookings to Gear Items. Represents the specific gear allocated to a particular expedition, including the quantity rented.</description>
+    <nameField>
+        <label>Expedition Gear Name</label>
+        <type>AutoNumber</type>
+        <displayFormat>EG-{0000}</displayFormat>
+        <trackHistory>false</trackHistory>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ControlledByParent</sharingModel>
+    <enableHistory>false</enableHistory>
+    <enableActivities>false</enableActivities>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableFeeds>false</enableFeeds>
+    <enableBulkApi>true</enableBulkApi>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <searchLayouts>
+        <customTabListAdditionalFields>Expedition_Booking__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Gear_Item__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Quantity__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Gear_Item__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Expedition_Booking__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Gear_Item__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+</CustomObject>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Price__c</fullName>
+    <label>Purchase Price</label>
+    <type>Currency</type>
+    <precision>18</precision>
+    <scale>2</scale>
+    <required>false</required>
+    <description>Original acquisition cost of this gear item. Used for asset valuation, insurance coverage calculations, and depreciation tracking.</description>
+    <inlineHelpText>Original purchase price of this equipment. Used for insurance and asset management purposes.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

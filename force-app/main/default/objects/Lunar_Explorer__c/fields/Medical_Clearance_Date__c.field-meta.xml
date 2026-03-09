@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Medical_Clearance_Date__c</fullName>
+    <label>Medical Clearance Date</label>
+    <type>Date</type>
+    <required>false</required>
+    <description>Date of the most recent medical clearance approval for low-gravity EVA activity. Must be current for all active bookings.</description>
+    <inlineHelpText>Date the explorer last received medical clearance for lunar EVA. Clearance expires after 12 months.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>
