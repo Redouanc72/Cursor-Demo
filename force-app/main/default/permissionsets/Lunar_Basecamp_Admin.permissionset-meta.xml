@@ -1,46 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <label>Lunar Basecamp Admin</label>
-    <description>
-        Full administrative access to all Lunar Basecamp Outfitters custom objects.
-        Grants Create, Read, Edit, Delete, View All, and Modify All on:
-        Lunar_Explorer__c, Gear_Item__c, Expedition_Booking__c,
-        Safety_Certification__c, and Expedition_Gear__c.
-        Includes read/edit FLS for all 27 custom fields across those objects.
-        Master-Detail fields on Expedition_Gear__c are excluded — access
-        is controlled by their respective parent object permissions.
-    </description>
+    <description>Full admin access to Lunar Basecamp Outfitters objects: Lunar Explorer, Gear Item, Expedition Booking, Safety Certification, Expedition Gear. CRUD, View All, Modify All, and FLS on all custom fields.</description>
     <hasActivationRequired>false</hasActivationRequired>
-
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <!--  TAB VISIBILITY                                         -->
-    <!--  All 5 custom object tabs set to Visible               -->
-    <!-- ═══════════════════════════════════════════════════════ -->
-
-    <tabVisibilities>
-        <tab>Lunar_Explorer__c</tab>
-        <visibility>Visible</visibility>
-    </tabVisibilities>
-
-    <tabVisibilities>
-        <tab>Gear_Item__c</tab>
-        <visibility>Visible</visibility>
-    </tabVisibilities>
-
-    <tabVisibilities>
-        <tab>Expedition_Booking__c</tab>
-        <visibility>Visible</visibility>
-    </tabVisibilities>
-
-    <tabVisibilities>
-        <tab>Safety_Certification__c</tab>
-        <visibility>Visible</visibility>
-    </tabVisibilities>
-
-    <tabVisibilities>
-        <tab>Expedition_Gear__c</tab>
-        <visibility>Visible</visibility>
-    </tabVisibilities>
 
     <!-- ═══════════════════════════════════════════════════════ -->
     <!--  OBJECT PERMISSIONS                                     -->
